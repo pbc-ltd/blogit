@@ -20,8 +20,6 @@ class Blogit::Parsers::MarkdownParser
 
 
   private
-
-
   # The Redcarpet renderer to use
   def renderer
     if Blogit::configuration.highlight_code_syntax

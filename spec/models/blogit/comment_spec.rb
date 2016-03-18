@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Comment do
-  
+
   describe "should not be valid if it" do
 
     let(:comment) { build(:comment) }
@@ -52,7 +52,7 @@ describe Comment do
       expect(comment).not_to be_valid
       expect(comment.errors[:body].size).to eq(1)
     end
-    
+
     it "doesn't have a valid website url" do
       comment.website = "not valid"
       expect(comment).not_to be_valid
@@ -60,5 +60,5 @@ describe Comment do
     end
 
   end
-  
+
 end

@@ -1,6 +1,5 @@
 module Blogit
   class Comment < ActiveRecord::Base
-
     # require custom validators
     require "validators"
     include Validators
@@ -49,14 +48,12 @@ module Blogit
     validates :body, presence: true, length: { minimum: 4, allow_blank: true}
     validates :website, format: {with: URL_REGEX, allow_blank: true}
 
-  private
-
+    private
     # Prepend http to the url before the validation check
     def format_website
       if self.website.present? and self.website !~ /^http/i
         self.website = "http://#{self.website}"
       end
     end
-
   end
 end

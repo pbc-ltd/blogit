@@ -5,11 +5,11 @@ describe Blogit::CommentsController do
   before do
     @routes = Blogit::Engine.routes
   end
-  
+
   let(:blog_post) { Blogit::Post.active.first || create(:post, :active) }
 
   let(:comment_attributes) { attributes_for(:comment) }
-  
+
   describe "POST create" do
 
 
@@ -17,7 +17,7 @@ describe Blogit::CommentsController do
       post :create, post_id: blog_post.id,
         comment: comment_attributes, format: format
     end
-    
+
     subject { do_post(:js) }
 
     context "when POST is AJAX" do

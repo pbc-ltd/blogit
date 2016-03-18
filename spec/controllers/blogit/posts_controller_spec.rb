@@ -14,7 +14,7 @@ describe Blogit::PostsController do
     let(:posts) { [] }
 
     def do_get(page=nil)
-      get :index, page: page 
+      get :index, page: page
     end
 
     it 'sets posts to Blogit::Post.for_index' do
@@ -22,7 +22,7 @@ describe Blogit::PostsController do
       do_get
       expect(assigns(:posts)).to eql(posts)
     end
-    
+
     context "when a page param is present" do
 
       it 'passes the page param on to Blogit::Post.for_index' do
@@ -30,18 +30,18 @@ describe Blogit::PostsController do
         do_get('2')
         expect(assigns(:posts)).to eql(posts)
       end
-      
+
     end
 
     context "when a custom layout is set" do
-      
+
       before do
         Blogit.configuration.layout = "custom"
         # Force re-load the Blogit::PostsController
         load(File.join(File.dirname(__FILE__), "../../..", "app", "controllers",
-          "blogit", "posts_controller.rb"))  
+          "blogit", "posts_controller.rb"))
       end
-      
+
       it "uses use the specified layout" do
         do_get
         expect(response).to render_template("layouts/custom")

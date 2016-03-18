@@ -1,17 +1,17 @@
 module Blogit
   module ApplicationHelper
-    
+
     # Format content using the {Blogit::Configuration#default_parser_class default_parser_class}
     #
     # content - A String containing the content to be formatted (defaults: nil)
     # block   - A Proc that returns a String of content to be formatted
     #
     # Examples
-    # 
+    #
     #   format_content("# This is a Markdown header")
     #   # => "<h1>This is a Markdown header</h1>"
     #
-    #   format_content do 
+    #   format_content do
     #     "some text"
     #   end
     #   # => "<p>some text</p>"
@@ -64,11 +64,11 @@ module Blogit
     def actions(content_or_options={}, options ={}, &block)
       div_tag_with_default_class("actions", content_or_options, options, &block)
     end
-    
-    
+
+
     private
-    
-    
+
+
     # Creates an HTML div with a default class value added
     #
     # default_class      - The CSS class name to add to the div
@@ -89,7 +89,5 @@ module Blogit
       options[:class] = Array(options[:class]) + [default_class]
       content_tag(:div, content, options)
     end
-
   end
-  
 end

@@ -1,11 +1,11 @@
 require "rails_helper"
-  
+
 describe Blogit::Post do
 
   context "should not be valid" do
 
     context "if blogger" do
-      
+
       let(:blog_post) { Blogit::Post.new }
 
       it "is nil" do
@@ -165,23 +165,23 @@ describe Blogit::Post do
   end
 
   describe :short_body do
-    
+
     let(:post) { build(:post) }
-    
+
     context "when Blogit.configuration.show_post_description is true" do
-      
+
       before do
         Blogit.configuration.show_post_description = true
       end
-      
+
       it "returns the Post's description" do
         expect(post.short_body).to eq(post.description)
       end
-      
+
     end
 
     context "when Blogit.configuration.show_post_description is false" do
-      
+
       before do
         Blogit.configuration.show_post_description = false
       end
@@ -189,17 +189,17 @@ describe Blogit::Post do
       it "returns the Post's description" do
         expect(post.short_body).to eq(post.body)
       end
-      
+
     end
 
   end
-  
+
   describe "blogger_twitter_username" do
-    
+
     let(:post) { build(:post) }
-    
+
     context "when the blogger responds to :twitter_username" do
-      
+
       before do
         class << post.blogger
           def twitter_username
@@ -207,15 +207,15 @@ describe Blogit::Post do
           end
         end
       end
-      
+
       it "returns the blogger's twitter username" do
         expect(post.blogger_twitter_username).to eql("@gavin_morrice")
       end
-      
+
     end
-    
+
     context "when the blogger doesn't respond to :twitter_username" do
-      
+
       before do
         Blogit.configuration.twitter_username = '@katana_code'
       end
@@ -223,8 +223,8 @@ describe Blogit::Post do
       it "returns nil" do
         expect(post.blogger_twitter_username).to be_nil
       end
-      
+
     end
   end
-  
+
 end

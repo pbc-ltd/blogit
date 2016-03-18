@@ -1,7 +1,5 @@
 module Blogit
-  
   module CommentsHelper
-    
     # The commenter's name for a Comment. When the Comment has a website, includes an html
     # link containing their name. Otherwise, just shows the name as a String.
     #
@@ -15,6 +13,5 @@ module Blogit
         comment.name
       end + " " + t('wrote', scope: "blogit.comments")
     end
-    
   end
 end
